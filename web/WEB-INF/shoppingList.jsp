@@ -13,10 +13,11 @@
     </head>
     <body>
         <h1>Shopping List</h1>
-        <p>Hello ${username}! <a href="login?logout">Log Out</a></p> 
-        <h1> List</h1>
-        <form method="post" action="ShoppingList">
+        <p>Hello ${username}! <a href="ShoppingList?action=logout">Log Out</a></p> 
+        <h1>List</h1>
+        <form method="" action="ShoppingList">
             Add Item: <input type="text" name="item" value="${item}">&nbsp;<input type="submit" value="Add">
+             <input type="hidden" name="action" value="add">
         </form>
     </body>
 </html>

@@ -24,22 +24,31 @@ public class ShoppingListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        String action = request.getParameter("action");
         String username = (String) session.getAttribute("username");
 
-        if (request.getParameter("Register Name") != null) {
-            session.setAttribute("username", username);
-            getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp")
+        if (action != null && action.equals("logout")) {
+            session.invalidate();
+            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp")
                     .forward(request, response);
         }
 
-        getServletContext().getRequestDispatcher("/WEB-INF/register.jsp")
-                .forward(request, response);
+        if (username != null) {
+            session.setAttribute("username", username);
+            getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp")
+                    .forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/WEB-INF/register.jsp")
+                    .forward(request, response);
+        }
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+
 
     }
 }
