@@ -23,8 +23,8 @@
             <input type="hidden" name="action" value="add">
         </form>
 
-        <form action="ShoppingList" method="post">
-            <ul>
+        <form method="post" action="ShoppingList">
+            <ul style="list-style-type:none">
                 <c:forEach var="item" items="${items}">
                     <li><input type="radio" name="itemToDelete" value="${item}">${item}</li>
                 </c:forEach>
